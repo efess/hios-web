@@ -1,0 +1,42 @@
+{
+  "name": "hios-web",
+  "version": "1.0.0",
+  "description": "A peronal (home) internet of stuff portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "dev": "webpack --watch -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efess/hios-web.git"
+  },
+  "keywords": [
+    "iot",
+    "portal",
+    "node",
+    "vue"
+  ],
+  "author": "Joseph Lukacovic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/efess/hios-web/issues"
+  },
+  "homepage": "https://github.com/efess/hios-web#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "material-design-lite": "^1.3.0",
+    "vue": "^2.1.10",
+    "vuex": "^2.1.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.1.8",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "vue-loader": "^11.0.0",
+    "vue-template-compiler": "^2.1.10",
+    "webpack": "^2.2.1"
+  }
+}
