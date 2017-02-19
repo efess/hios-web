@@ -1,12 +1,13 @@
 <template>
   <div>
-    <test/>
+    <sidenav />
+    <router-view></router-view>
   </div>
 </template>
 <script>
 export default {
     components: {
-        test: require('./test.vue')
+        sidenav: require('./sidenav.vue')
     }
 }
 </script>
