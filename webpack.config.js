@@ -1,10 +1,11 @@
 var path = require('path');
+var cssExtractor = require("extract-text-webpack-plugin")
 
 module.exports = {
   entry: './src/app/main.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'js/bundle.js',
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     loaders: [
@@ -18,11 +19,22 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            css: cssExtractor.extract({
+              use: 'css-loader',
+              fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
+            })
+          }
+        }
       },
       { 
         test: /\.css$/, loader: "style-loader!css-loader" 
       }
     ]
-  }
+  },
+  plugins: [
+    new cssExtractor("assets/style.css")
+  ]
 };

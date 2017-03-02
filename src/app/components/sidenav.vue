@@ -17,7 +17,8 @@
         </md-toolbar>
 
         <router-link to="/">Home</router-link>
-        <router-link to="/test2">Go to Test2</router-link>
+        <router-link to="/kitchen">Undercabinet Lights</router-link>
+        <router-link to="/livingroom">Living Room</router-link>
       </md-sidenav>
     </div>
   </div>
