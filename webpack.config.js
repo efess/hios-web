@@ -1,40 +1,85 @@
 var path = require('path');
-var cssExtractor = require("extract-text-webpack-plugin")
+var webpack = require('webpack');
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 module.exports = {
-  entry: './src/app/main.js',
+  entry: [
+    'react-hot-loader/patch',
+    // activate HMR for React
+
+    // 'webpack-dev-server/client?http://localhost:3000',
+    // // bundle the client for webpack-dev-server
+    // // and connect to the provided endpoint
+
+    'webpack/hot/only-dev-server',
+    // bundle the client for hot reloading
+    // only- means to only hot reload for successful updates
+
+    './src/js/index.js',
+    // the entry point of our app
+  ],
+
   output: {
-    filename: 'js/bundle.js',
-    path: path.resolve(__dirname, 'public')
+    filename: 'static/bundle.js',
+    // the output bundle
+
+    path: path.resolve(__dirname, 'dist'),
+
+    publicPath: '/'
+    // necessary for HMR to know where to load the hot update chunks
   },
+
+  devtool: 'inline-source-map',
+
   module: {
-    loaders: [
+    rules: [
       {
-        // Ask webpack to check: If this file ends with .js, then apply some transforms
-        test: /\.js$/,
-        // Transform it with babel
-        loader: 'babel-loader',
-        // don't transform node_modules folder (which don't need to be compiled)
-        exclude: /node_modules/
+        test: /\.jsx?$/,
+        use: [
+          'babel-loader',
+        ],
+        exclude: /node_modules/,
       },
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            css: cssExtractor.extract({
-              use: 'css-loader',
-              fallback: 'vue-style-loader' // <- this is a dep of vue-loader, so no need to explicitly install if using npm3
-            })
-          }
-        }
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: [ 'css-loader' ] })
       },
-      { 
-        test: /\.css$/, loader: "style-loader!css-loader" 
+      {
+          test: /\.(eot|svg|ttf|woff|woff2)$/,
+          loader: 'file-loader'
       }
-    ]
+    ],
   },
+
   plugins: [
-    new cssExtractor("assets/style.css")
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    // enable HMR globally
+
+    new webpack.NamedModulesPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+
+    new webpack.NoEmitOnErrorsPlugin(),
+    // do not emit compiled assets that include errors
+    new ExtractTextPlugin('static/styles.css'),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true
+    }),
+    new FriendlyErrorsPlugin()
+  ],
+
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+
+    historyApiFallback: true,
+    // respond to 404s with index.html
+
+    hot: true,
+    // enable HMR on the server
+  },
 };

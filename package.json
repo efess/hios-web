@@ -1,60 +1,55 @@
 {
   "name": "hios-web",
   "version": "1.0.0",
-  "description": "A peronal (home) internet of stuff portal",
-  "main": "index.js",
+  "description": "web app frontend for HioS",
   "scripts": {
-    "test": "npm test",
-    "dev": "webpack --watch -d"
+    "start": "node ./dev/server",
+    "lint": "eslint src",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
+    "postbuild": "copyfiles index.html dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/efess/hios-web.git"
   },
-  "keywords": [
-    "iot",
-    "portal",
-    "node",
-    "vue"
-  ],
-  "author": "Joseph Lukacovic",
+  "author": "Joseph Lukacovic <efessel@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/efess/hios-web/issues"
-  },
-  "homepage": "https://github.com/efess/hios-web#readme",
-  "dependencies": {
-    "axios": "^0.15.3",
-    "base64-js": "^1.2.0",
-    "body-parser": "^1.16.1",
-    "cookie-parser": "^1.4.3",
-    "d3": "^4.6.0",
-    "express": "^4.14.1",
-    "extend": "^3.0.0",
-    "jquery": "^3.1.1",
-    "mqtt": "^2.4.0",
-    "mysql": "^2.13.0",
-    "node-uuid": "^1.4.7",
-    "path": "^0.12.7",
-    "ramda": "^0.23.0",
-    "vue": "^2.1.10",
-    "vue-material": "^0.7.1",
-    "vue-router": "^2.2.1",
-    "vuex": "^2.1.2"
-  },
   "devDependencies": {
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-preset-env": "^1.1.8",
-    "babel-preset-stage-0": "^6.22.0",
-    "babel-preset-stage-3": "^6.22.0",
-    "css-loader": "^0.26.1",
-    "eslint": "^3.16.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.3",
-    "pug": "^2.0.0-beta11",
-    "style-loader": "^0.13.1",
-    "vue-loader": "^11.0.0",
-    "vue-template-compiler": "^2.1.10",
-    "webpack": "^2.2.1"
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "copyfiles": "^1.2.0",
+    "cross-env": "^3.1.4",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^1.1.5",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.17.4",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "rimraf": "^2.6.0",
+    "style-loader": "^0.19.0",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0",
+    "webpack-hot-middleware": "^2.19.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "d3": "^4.11.0",
+    "eslint": "^3.14.1",
+    "eslint-plugin-react": "^6.9.0",
+    "jquery": "^3.2.1",
+    "material-ui": "^0.19.3",
+    "ramda": "^0.24.1",
+    "react": "^15.6.2",
+    "react-color": "^2.13.8",
+    "react-dom": "^15.6.2",
+    "react-faux-dom": "^4.0.3",
+    "react-modal": "^2.3.2",
+    "react-tap-event-plugin": "^3.0.2",
+    "react-timer-mixin": "^0.13.3"
   }
 }
