@@ -60,12 +60,12 @@ export default class SessionOptions extends React.Component {
         const actions = [
             <FlatButton
                 label="Cancel"
-                onTouchTap={this.handleClose.bind(this)}
+                onClick={this.handleClose.bind(this)}
             />,
             <FlatButton
                 label="Done"
                 primary={true}
-                onTouchTap={this.handleUpdateAndClose.bind(this)}
+                onClick={this.handleUpdateAndClose.bind(this)}
             />
         ];
         

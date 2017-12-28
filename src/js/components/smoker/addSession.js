@@ -50,7 +50,6 @@ export default class AddSession extends React.Component {
         var newProbe = this.state.newProbe;
         newProbe.probeId = value;
         this.setState({newProbe: newProbe});
-    
     }
     handleChange(field) {
         return function(e, value){
@@ -64,12 +63,12 @@ export default class AddSession extends React.Component {
         const actions = [
             <FlatButton
                 label="Cancel"
-                onTouchTap={this.handleClose.bind(this)}
+                onClick={this.handleClose.bind(this)}
             />,
             <FlatButton
                 label="Add"
                 primary={true}
-                onTouchTap={this.handleAddAndClose.bind(this)}
+                onClick={this.handleAddAndClose.bind(this)}
             />
         ];
         const style = {
@@ -82,7 +81,7 @@ export default class AddSession extends React.Component {
         var button = null;
         if(availableProbes.length) {
             button = <FloatingActionButton style={style.addButton}
-                onTouchTap={this.handleOpen.bind(this)}>
+                onClick={this.handleOpen.bind(this)}>
                 <ContentAdd />
             </FloatingActionButton>;
         }

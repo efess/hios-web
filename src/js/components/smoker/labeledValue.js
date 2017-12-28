@@ -55,7 +55,7 @@ export default class LabeledValue extends React.Component {
                 label="Ok"
                 primary={true}
                 keyboardFocused={true}
-                onTouchTap={this.handleClose.bind(this)}
+                onClick={this.handleClose.bind(this)}
             />,
         ];
 
@@ -63,7 +63,7 @@ export default class LabeledValue extends React.Component {
         
         return (
             <div>
-                <span style={valStyle} onTouchTap={this.handleOpen.bind(this)}>{this.props.value}°</span>
+                <span style={valStyle} onClick={this.handleOpen.bind(this)}>{this.props.value}°</span>
 
                 <Dialog
                 title={title}
