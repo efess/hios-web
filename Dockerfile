@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-ENV API_BACKEND=hios-backend:3000
+ENV API_BACKEND=hios-backend-service:3000
 ENV NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
 ENV NGINX_ENVSUBST_FILTER=API_BACKEND
 
